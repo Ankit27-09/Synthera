@@ -10,6 +10,10 @@ take a test or fill out a form.
 Built and evaluated as a prompt-engineering pipeline, measured against a **fair**
 single-prompt baseline that receives the identical input payload.
 
+## Architecture
+
+![Sensora architecture: the Android client posts to a FastAPI reasoning service, which runs the stats engine and journal extractor, two blind agents, synthesis, then suggestions and the doctor report](docs/architecture.png)
+
 ---
 
 ## Design principle
