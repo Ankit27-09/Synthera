@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "node_03.output.json",
+  "title": "Node 3 - Statistical Trend Engine output (THE NUMBER REGISTRY)",
+  "description": "The single origin of every number in the system. Metric 1 (numeric fidelity) whitelists exactly the keys in `figures`; any number emitted downstream that does not trace to a key here is a fabrication. Contract defined at Step 1; producer implemented at Step 4.",
+  "type": "object",
+  "properties": {
+    "figures": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9_]+$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "method": {
+            "$ref": "common.json#/$defs/stat_method"
+          },
+          "significant": {
+            "description": "Whether the fitted slope differs from zero at p<0.05. Absent when the figure is not regression-derived, or when too few points exist to judge. A figure that is present but not significant is noise, and Node 5 must not report it as a trend.",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "value",
+          "unit",
+          "method"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "window_weeks": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "sufficient_data": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "figures",
+    "window_weeks",
+    "sufficient_data"
+  ],
+  "additionalProperties": false
+}
