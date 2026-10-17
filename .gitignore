@@ -1,0 +1,35 @@
+# Secrets - never commit real keys
+.env
+*.key
+
+# Run logs are evidence, but they are large and regenerable. The ones actually cited
+# by the iteration log are copied into evidence/ and committed, since a cited
+# artifact a reader cannot open is not evidence.
+runs/*
+!runs/.gitkeep
+
+# Cached third-party responses (Step 8)
+.cache/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+retrieval/cache/
+
+# Android build outputs and machine-local SDK path
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.kotlin/
+*.apk
